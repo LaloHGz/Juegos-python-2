@@ -28,6 +28,9 @@ def change(x, y):
     "Change snake direction."
     aim.x = x
     aim.y = y
+    "La comida podrá moverse al azar un paso a la vez y no deberá de salirse de la ventana"
+    food.x = randrange(-18, 18) * 10
+    food.y = randrange(-18, 18) * 10
 
 
 def inside(head):
@@ -40,8 +43,6 @@ def move():
     head = snake[-1].copy()
     head.move(aim)
 
-    global colorbody
-    global colorfood
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
@@ -49,10 +50,13 @@ def move():
         return
 
     snake.append(head)
+    
+    global colorbody
+    global colorfood
 
     if head == food:
         print('Snake:', len(snake))
-        """ La comida podrá moverse al azar un paso a la vez y no deberá de salirse de la ventana"""
+        
         food.x = randrange(-18, 18) * 10
         food.y = randrange(-18, 18) * 10
 

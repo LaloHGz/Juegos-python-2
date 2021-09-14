@@ -60,10 +60,6 @@ def move():
         food.x = randrange(-18, 18) * 10
         food.y = randrange(-18, 18) * 10
 
-        colorbody = choice(colors)
-        colorfood = choice(colors)
-        while(colorbody == colorfood):
-            colorfood = choice(colors)
     else:
         snake.pop(0)
 

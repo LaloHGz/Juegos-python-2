@@ -24,8 +24,8 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        speed.x = (x + 300) / 25
+        speed.y = (y + 300) / 25
 
 
 def inside(xy):
@@ -59,7 +59,9 @@ def move():
         target.x -= 0.5
 
     if inside(ball):
-        speed.y -= 0.35
+        #speed.y -= 0.35
+        #Parte del cambio de velocidad en la pelota
+        speed.y -= 0.15
         ball.move(speed)
 
     dupe = targets.copy()
@@ -70,13 +72,12 @@ def move():
             targets.append(target)
 
     draw()
-
-    for target in targets:
-        if not inside(target):
-            return
-
-    ontimer(move, 50)
-
+    
+    #for target in targets:
+        #if not inside(target):
+            #return
+    #Cambio de velocidad en la pelota y target general 
+    ontimer(move, 5)
 
 setup(420, 420, 370, 0)
 hideturtle()

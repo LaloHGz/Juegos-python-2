@@ -72,13 +72,12 @@ def move():
             targets.append(target)
 
     draw()
-
+    
     #for target in targets:
         #if not inside(target):
             #return
     #Cambio de velocidad en la pelota y target general 
     ontimer(move, 5)
-
 
 setup(420, 420, 370, 0)
 hideturtle()

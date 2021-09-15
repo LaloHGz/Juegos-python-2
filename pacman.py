@@ -25,6 +25,7 @@ ghosts = [
     [vector(-180, -160), vector(0, 5)],
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
+    [vector(-120, -60), vector(-5, 0)]
 ]
 
 "Cambiar el tablero"
@@ -157,7 +158,7 @@ def move():
         if abs(pacman - point) < 20:
             return
 
-    ontimer(move, 100)
+    ontimer(move, 10)
 
 
 def change(x, y):

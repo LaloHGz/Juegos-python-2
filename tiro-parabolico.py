@@ -59,7 +59,9 @@ def move():
         target.x -= 0.5
 
     if inside(ball):
-        speed.y -= 0.35
+        #speed.y -= 0.35
+        #Parte del cambio de velocidad en la pelota
+        speed.y -= 0.15
         ball.move(speed)
 
     dupe = targets.copy()
@@ -74,8 +76,8 @@ def move():
     for target in targets:
         if not inside(target):
             return
-
-    ontimer(move, 50)
+    #Cambio de velocidad en la pelota y target general 
+    ontimer(move, 5)
 
 
 setup(420, 420, 370, 0)

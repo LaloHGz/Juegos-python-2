@@ -17,8 +17,10 @@ from typing import Counter
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
-tiles = list(range('Z'))*2
+"tiles = list(range(32)) * 2"
+
+" utilizar algo diferente a los dígitos para resolver el juego y que al usuario le ayude a tener mejor memoria"
+tiles = ['abeja','aguila','avispa','ballena','bisonte','bufalo','burro','caballo','camello','canario','cangrejo','canguro','caracol','cebra','cerdo','chimpance','ciervo','cisne','cocodrilo','elefante','escarabajo','escorpion','foca','gallina','gato','golondrina','hormiga','jabali','jirafa','leon','loro','mosca','abeja','aguila','avispa','ballena','bisonte','bufalo','burro','caballo','camello','canario','cangrejo','canguro','caracol','cebra','cerdo','chimpance','ciervo','cisne','cocodrilo','elefante','escarabajo','escorpion','foca','gallina','gato','golondrina','hormiga','jabali','jirafa','leon','loro','mosca']
 state = {'mark': None}
 hide = [True] * 64
 
@@ -84,13 +86,15 @@ def draw():
         up()
 
         "Centrar el dígito en el cuadrado"
-        if tiles[mark] < 10:
+        """         if tiles[mark] < 10:
             goto(x + 15,y)
         else:
-            goto(x + 5, y)
-        
+            goto(x + 5, y) """
+
+        goto(x+2,y+10)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        "write(tiles[mark], font=('Arial', 30, 'normal'))"
+        write(tiles[mark], font=('Arial', 10, 'normal'))
 
     "Cantidad de taps, juego terminado, detecta que todos los cuadrados se han destapado"
     if aux == 32:

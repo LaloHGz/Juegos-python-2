@@ -12,13 +12,18 @@ Exercises:
 
 from random import *
 from turtle import *
+from typing import Counter
 
 from freegames import path
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
+tiles = list(range('Z'))*2
 state = {'mark': None}
 hide = [True] * 64
+
+sum  = 0
+aux = 0
 
 
 def square(x, y):
@@ -45,16 +50,19 @@ def xy(count):
 
 
 def tap(x, y):
+    global sum, aux
+    sum += 1
     "Update mark and hidden tiles based on tap."
     spot = index(x, y)
     mark = state['mark']
-
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
+        aux += 1
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+
 
 
 def draw():
@@ -74,12 +82,28 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+
+        "Centrar el dígito en el cuadrado"
+        if tiles[mark] < 10:
+            goto(x + 15,y)
+        else:
+            goto(x + 5, y)
+        
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
-    update()
-    ontimer(draw, 100)
+    "Cantidad de taps, juego terminado, detecta que todos los cuadrados se han destapado"
+    if aux == 32:
+        goto(-160,0)
+        color('white')
+        write("Cantidad de Taps: ", font=('Arial', 25, 'normal'))
+        goto(110,0)
+        write(sum, font=('Arial', 25, 'normal'))
+        goto(-140,-50)
+        write("Juego Terminado", font=('Arial', 25, 'normal'))
+    else:
+        update()
+        ontimer(draw, 100)
 
 
 shuffle(tiles)
